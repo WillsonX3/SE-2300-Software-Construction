@@ -12,14 +12,34 @@ class Card:
 
 def add_card():
     card_name = input("Enter trading card name: ").strip()
-    card_set = input("Enter trading card set: ").strip()
-    card_value = input("Enter value of the card: ").strip()
 
-    card_object = Card(card_name, card_set, float(card_value)) #Create a new Card object with the input values
+    if card_name == "": #If invalid, call the method again
+        print("Trading card name cannot be empty.")
+        return
+    
+    card_set = input("Enter trading card set: ").strip()
+
+    if card_set == "":
+        print("Trading card set cannot be empty.")
+        return
+    
+    try:
+        card_value = float(input("Enter value of the card: "))
+    
+    except ValueError: # If wrong data type is entered
+
+        print("Please enter a number.")
+        return
+
+
+
+    card_object = Card(card_name, card_set, card_value) #Create a new Card object with the input values
 
     card_list.append(card_object) #Add the new Card object to the list
 
     print(f"The following trading card has been added successfully: {card_name}")
+
+    
 
 
 def main():
@@ -47,6 +67,7 @@ def main():
     
         elif user_input == "4":
             print("Viewing trading cards.")
+            
     
         elif user_input == "5":
             break
