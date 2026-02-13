@@ -42,6 +42,11 @@ def add_card():
     
 def retrieve_cards():
 
+    if card_list == []:
+
+        print("Your card list is empty.")
+        return
+
     print(f"**Your current card list**\n")
 
     number = 1
@@ -54,6 +59,30 @@ def retrieve_cards():
         total_value += card.card_value
 
     print(f"\nTotal value of your cards: ${total_value}")
+
+def delete_card():
+
+    if card_list == []:
+
+        print("Your card list is empty.")
+        return
+    
+    index = 0
+
+    for card in card_list: #Iterate through card_list to display a card in their respective index
+        
+        print(f"{index} - Card: {card.card_name}")
+        index += 1
+    
+    print("Please choose the index of the card you want to delete.")
+
+    user_input = int(input())
+
+    print(f"You have successfully deleted card: {card_list[user_input].card_name}")
+
+    card_list.pop(user_input) #Removes the index requested from user
+    
+    
 
 
 def main():
@@ -77,7 +106,8 @@ def main():
             print("Editing trading card.")
     
         elif user_input == "3":
-            print("Deleting trading card.")
+            #print("Deleting trading card.")
+            delete_card()
     
         elif user_input == "4":
             #print("Viewing trading cards.")
