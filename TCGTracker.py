@@ -96,7 +96,58 @@ def delete_card():
 
     card_list.pop(user_input) #Removes the index requested from user
     
+def edit_card():
+
+    if card_list == []:
+
+        print("Your card list is empty.")
+        return
     
+    index = 0
+
+    for card in card_list: 
+        
+        print(f"{index} - Card: {card.card_name}")
+        index += 1
+    
+    print("Please choose the index of the card you want to edit.")
+
+    try:
+
+        user_input = int(input())
+
+        if user_input < 0 or user_input >= len(card_list):
+
+            print("Please enter a valid index.")
+            return
+    
+    except ValueError:
+
+        print("Please enter a number.")
+        return
+    
+    print(f"The following card has been selected: {card_list[user_input].card_name}")
+    
+    selected_card = card_list[user_input]
+
+    print("\nPlease choose an option below:")
+    print("1. Edit Card Name")
+    print("2. Edit Card Set")
+    print("3. Edit Card Value")
+
+    user_input = input("Choose the option you would like to change: ")
+
+    if user_input == "1":
+        print("Card name has been changed successfully.")
+
+    if user_input == "2":
+        print("Card set has been changed successfully.")
+
+    if user_input == "3":
+        print("Card value has been changed successfully.")
+
+    
+
 
 
 def main():
@@ -117,7 +168,8 @@ def main():
             add_card()
 
         elif user_input == "2":
-            print("Editing trading card.")
+            #print("Editing trading card.")
+            edit_card()
     
         elif user_input == "3":
             #print("Deleting trading card.")
