@@ -76,7 +76,21 @@ def delete_card():
     
     print("Please choose the index of the card you want to delete.")
 
-    user_input = int(input())
+    try:
+
+        user_input = int(input())
+
+        if user_input < 0 or user_input >= len(card_list): #If the user input is outside the bounds of index, then...
+
+            print("Please enter a valid index.")
+            return
+
+    except ValueError:
+
+        print("Please enter a number.")
+        return
+    
+    
 
     print(f"You have successfully deleted card: {card_list[user_input].card_name}")
 
