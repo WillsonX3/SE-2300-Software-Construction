@@ -128,7 +128,8 @@ def edit_card():
     
     print(f"The following card has been selected: {card_list[user_input].card_name}")
     
-    selected_card = card_list[user_input]
+    selected_index = user_input #Save user selected index to reference later
+
 
     print("\nPlease choose an option below:")
     print("1. Edit Card Name")
@@ -138,13 +139,43 @@ def edit_card():
     user_input = input("Choose the option you would like to change: ")
 
     if user_input == "1":
-        print("Card name has been changed successfully.")
 
-    if user_input == "2":
-        print("Card set has been changed successfully.")
+        print("Enter trading card name: ")
 
-    if user_input == "3":
-        print("Card value has been changed successfully.")
+        user_input = input().strip()
+
+        card_list[selected_index].card_name = user_input
+
+        print(f"Card name has been changed successfully to: {user_input}")
+
+    elif user_input == "2":
+
+        print("Enter trading card set: ")
+
+        user_input = input().strip()
+
+        card_list[selected_index].card_set = user_input
+
+        print(f"Card set has been changed successfully to: {user_input}")
+
+    elif user_input == "3":
+
+        print("Enter trading card value: ")
+
+        try:
+
+            user_input = int(input())
+
+            card_list[selected_index].card_value = user_input
+
+            print(f"Card value has been changed successfully to: ${user_input}")
+        
+        except ValueError:
+            print("Please enter a number.")
+            return
+
+    else:
+        print("That is not a valid option.")
 
     
 
