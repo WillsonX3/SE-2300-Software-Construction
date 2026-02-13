@@ -13,7 +13,7 @@ class Card:
 def add_card():
     card_name = input("Enter trading card name: ").strip()
 
-    if card_name == "": #If invalid, call the method again
+    if card_name == "": #If invalid, return to main
         print("Trading card name cannot be empty.")
         return
     
@@ -40,6 +40,20 @@ def add_card():
     print(f"The following trading card has been added successfully: {card_name}")
 
     
+def retrieve_cards():
+
+    print(f"**Your current card list**\n")
+
+    number = 1
+    total_value = 0
+
+    for card in card_list: #Iterate through each index of card_list
+
+        print(f"{number} - Card: {card.card_name} | Set: {card.card_set} | Value: ${card.card_value}")
+        number += 1
+        total_value += card.card_value
+
+    print(f"\nTotal value of your cards: ${total_value}")
 
 
 def main():
@@ -66,7 +80,8 @@ def main():
             print("Deleting trading card.")
     
         elif user_input == "4":
-            print("Viewing trading cards.")
+            #print("Viewing trading cards.")
+            retrieve_cards()
             
     
         elif user_input == "5":
