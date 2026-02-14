@@ -1,3 +1,5 @@
+import json #Access to JSON methods for data persistence
+
 print("Welcome to your TCG Tracker!\n")
 
 user_input = input("Press ENTER to continue...")
@@ -178,7 +180,35 @@ def edit_card():
         print("That is not a valid option.")
 
     
+def load_cards():
 
+    print("Loading current list of cards...")
+
+    global card_list #Modify the existing global variable
+
+    try:
+        card_file = open("cards.json", "r") #Opening the file in read mode
+
+        card_data = json.load(card_file) #Variable that will hold the data of card_file
+
+        card_file.close()
+
+        card_list = [] #Clears the card_list to avoid duplicates
+
+        for card in card_data: #Iterate through the data in card_data and append it to card_list
+
+            card = Card(card["card_name"], card["card_set"], card["card_value"]) #Create a Card object with values from card_data
+
+            card_list.append(card)
+    
+    except FileNotFoundError: #If the file is not found...
+
+        print("List of cards does not exist yet.")
+        card_list = []
+
+    except json.JSONDecodeError: #If the file is empty...
+        print("Your card list is empty.")
+        card_list = []
 
 
 def main():
@@ -217,4 +247,5 @@ def main():
         else:
             print("Please choose a valid option.")
 
+load_cards()
 main()
