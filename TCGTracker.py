@@ -41,6 +41,8 @@ def add_card():
 
     print(f"The following trading card has been added successfully: {card_name}")
 
+    save_cards()
+
     
 def retrieve_cards():
 
@@ -97,6 +99,8 @@ def delete_card():
     print(f"You have successfully deleted card: {card_list[user_input].card_name}")
 
     card_list.pop(user_input) #Removes the index requested from user
+
+    save_cards()
     
 def edit_card():
 
@@ -178,6 +182,8 @@ def edit_card():
 
     else:
         print("That is not a valid option.")
+    
+    save_cards()
 
     
 def load_cards():
@@ -203,13 +209,35 @@ def load_cards():
     
     except FileNotFoundError: #If the file is not found...
 
-        print("List of cards does not exist yet.")
+        print("Your card list does not exist yet.")
         card_list = []
 
     except json.JSONDecodeError: #If the file is empty...
         print("Your card list is empty.")
         card_list = []
 
+def save_cards():
+
+    card_data = []
+
+    for card in card_list: #Iterate through card_list and saves the data into card_data
+
+        data = {
+
+            "card_name": card.card_name,
+            "card_set": card.card_set,
+            "card_value": card.card_value
+        }
+
+        card_data.append(data)
+    
+    card_file = open("cards.json", "w") #Open or create the JSON file in write mode
+
+    json.dump(card_data, card_file) #Writes the data from card_data to JSON file
+
+    card_file.close()
+    
+    
 
 def main():
 
