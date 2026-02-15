@@ -1,6 +1,6 @@
 # TCG Tracker
 
-# Requirements:
+## Requirements:
 1. Python 3.12 or newer
 
 ## How to download TCG Tracker:
