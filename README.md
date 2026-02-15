@@ -1,20 +1,20 @@
-** TCG Tracker **
+# TCG Tracker
 
-Requirements:
+# Requirements:
 1. Python 3.12 or newer
 
-How to download TCG Tracker:
+## How to download TCG Tracker:
 1. Navigate to: https://github.com/WillsonX3/SE-2300-Software-Construction
 2. Click on TCGTracker.py
 3. Locate "Download raw file" button on the upper-right side of the header
 4. Press the button to download the program
 
-How to run TCG Tracker: 
+## How to run TCG Tracker:
 1. Locate TCGTracker.py in the Downloads folder
 2. Move the program file into a designated folder
 3. Right-click on TCGTracker and click "Open"
 
-How to use TCG Tracker:
+## How to use TCG Tracker:
 - When the program starts, press the ENTER key 
 - There will be a menu with five available options:
 	1. Add Trading Card
@@ -41,3 +41,8 @@ How to use TCG Tracker:
 
 	5. Exit
 		- Close the program.
+
+## Additional Information:
+- Trading cards and their values will be stored in a JSON file named "cards.json".
+	- This file will automatically be created when a card is added
+	- This file will be located in the same directory as the program
